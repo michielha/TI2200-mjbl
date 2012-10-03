@@ -39,7 +39,16 @@ is
 \section*{Assignment 7}
 
 \section*{Assignment 8}
+While reviewing the system, we have come upon three major design faults. First, we'll name the problems and then go into further detail. The first fault we've come across was the fact that there are multiple `MessageX' classes. The second major design fault is that there is a mix between subscriber-publisher and client-server archetectures, and that they aren't used properley. The thrird problem we would like to discuss is the overcomplexity of the decoding pipeline.
 
+Messagefactory
+
+\begin{itemize}
+\item The problem with these classes is that they are not in compliance with the 'Single Responsibility Principle'. This specifies that a class should have only one reason to change. Also the 'Liskov Subsitution Priciple'  is violated. The problem is that there are multiple classes built, while they have almost identical behaviour and properties. The proper way to implement these messages would be to use one superclass 'Message' with an attribute 'message\_type' which is an enum of possible messages. What another option could be is that we crate sub-classes of the superclass `Message'. The superclass holds the data and functions that are the same amongst all messages, while the sub-classes hold induvidual properties and functions. 
+In this particular case, a good design would be to split message types into 2 types: Status update messages and location update messsages and make classes for them accordingly. Very important is that a class should only change, when the actual `thing' it models changes, and no other class is affected, but keeping in mind that two different classes that are the same, should be the same class.
+\item bla
+\item bla
+\end{itemize}
 
 
 
