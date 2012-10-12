@@ -37,7 +37,29 @@ meuk over percentages
 \section*{Assignment 5}
 
 \section*{Assignment 6}
-meuk over compliant messages
+In this system, all messages are fed through a compliance check. This checks if the messages are compliant to the AIS system. In the case that the messages are compliant, nothing is done. But if a message in non-compliant, the boat that the message originated from gets the tag: non-compliant. The problem with this system is that because the checks are quite strict, over time, all the vessels in the system get marked as non-compliant. To solve this, an addition must be made made to the system. Then, when a vessel starts sending compliant messages again, the system sets the state of the vessel back to compliant.
+
+\subsection*{Requirements}
+The requirements of the change in the system are the following:
+\begin{itemize}
+\item Vessels should be marked as non-compliant when they start sending non-compliant AIS messages
+\item Vessels should be marked as compliant again, when they start sending compliant AIS messages again
+\end{itemize}
+
+\subsection*{Realization}
+The changes that where made to the system, in order to meet the requirements are the easiest to see in a sequence diagram. Before the changes, the system was looking like in diagram \ref{diag_compliant_sequence_before}.
+\\
+TODO: Add awesome sequence diagram before the change.
+\\
+As can be seen from the diagram, there are a few classes that should be changed.
+\begin{itemize}
+\item First of all, the ComplianceService should not only report non-compliant messages, but say for every message if the message is compliant or not. This was not too easy, because ComplianceService has two, independent message checking threads. This is fine if you only want to know which vessels are not-compliant, because if one of the two checks fails, that thread publishes the vessel as non-compliant. To fix this, an list of all known vessels is now stored in ComplianceService, and everytime a check passes, it checks in that list if the other check also passed, and then it publishes the vessel as non-compliant. So every time the checks run, they check the last result of the other check for that vessel, so they don't mark vessels as compliant if there not compliant.
+\item The second class that needs addition, is the VesselService class. This class must be made compatible with the newly broadcasted messages from ComplianceService and needs to mark vessels compliant again, if CompliantService reports compliant messages. This is a relatively small change.
+\end{itemize}
+
+Now, the system works as seen in diagram \ref{diag_compliant_sequence_after}, and meets all the requirements needed.
+\\
+TODO: Add awesome sequence diagram after the change
 
 
 \section*{Assignment 7}
