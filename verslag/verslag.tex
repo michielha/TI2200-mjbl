@@ -18,14 +18,39 @@ TU Delft\\}
 \maketitle
 
 \section*{Assignment 1}
-Hallo bladiebla
+To get an idea of the architectural design, a class diagram of the program is created. Using an class diagram, it is possible to quickly see the relations between classes and their attributes and methods. When trying to add features to the system, one should first figure out where the new code should be implemented and what possible effects this could have on other classes. A class diagram gives this information.
 
-\begin{verbatim}
-hallo dit
-is 
-	code
-\end{verbatim}
+The systems basic overview can be seen in figure 1. -Hoe krijg je hier een link?- Here we devided the system into four modules: the Service module, the Domain module, the GIS module and the Utility module. Each of these modules, except for the Utility module, consist of multiple lower level modules and classes. Therefore, everyone of these modules have a personal class diagram, which can be found in figures 2, 3 and 4.
 
+\begin{figure}
+  \centering
+  \includegraphics[width=4in]{lib_total_overview}
+  \caption[The four basic modules]
+   {An overview of the interaction between the four basic modules, which build the system.}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=5in]{lib_domain_total}
+  \caption[The Domain module]
+   {A class diagram of the Domain module.}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=5in]{lib_service_total}
+  \caption[The Service module]
+   {A class diagram of the Service module.}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=3in]{lib_gis_total}
+  \caption[The GIS module]
+   {A class diagram of the GIS module.}
+\end{figure}
+
+Visible in the class diagram of the Service module, on the left side of figure 3, is the pipeline of services, which process messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline will be discussed later on, yet in this class diagram the sequence is visible.
 
 \section*{Assignment 2}
 
