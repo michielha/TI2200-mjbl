@@ -18,7 +18,7 @@ TU Delft\\}
 \maketitle
 
 \section*{Assignment 1}
-To get an idea of the architectural design, a class diagram of the program is created. Using an class diagram, it is possible to quickly see the relations between classes and their attributes and methods. When trying to add features to the system, one should first figure out where the new code should be implemented and what possible effects this could have on other classes. A class diagram gives this information.
+To get an idea of the architectural design, a class diagram of the system is created. Using an class diagram, it is possible to quickly see the relations between classes and their attributes and methods. When trying to add features to the system, one should first figure out where the new code should be implemented and what possible effects this could have on other classes. A class diagram gives this information.
 
 The systems basic overview can be seen in figure \ref{lib_total_overview}. Here we devided the system into four modules: the Service module, the Domain module, the GIS module and the Utility module. Each of these modules, except for the Utility module, consist of multiple lower level modules and classes. Therefore, everyone of these modules have a personal class diagram, which can be found in \ref{lib_domain_total}, \ref{lib_service_total} and \ref{lib_gis_total}.
 
@@ -31,27 +31,33 @@ The systems basic overview can be seen in figure \ref{lib_total_overview}. Here 
 
 \begin{figure}
   \centering
-  \includegraphics[width=5in]{lib_domain_total}
+  \includegraphics[angle=90,width=5.5in]{lib_domain_total}
   \caption{A class diagram of the Domain module.}
   \label{lib_domain_total}
 \end{figure}
 
 \begin{figure}
-  \ref{lib_service_total}
   \centering
-  \includegraphics[width=5in]{lib_service_total}
+  \includegraphics[width=5.5in]{lib_service_total}
   \caption{A class diagram of the Service module.}
   \label{lib_service_total}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[width=3in]{lib_gis_total}
+  \includegraphics[width=4in]{lib_gis_total}
   \caption{A class diagram of the GIS module.}
   \label{lib_gis_total}
 \end{figure}
 
-Visible in the class diagram of the Service module, on the left side of \ref{lib_service_total}, is the pipeline of services, which process messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline will be discussed later on, yet in this class diagram the sequence is visible.
+Visible in the class diagram of the Service module, on the left side of \ref{lib_service_total}, is the pipeline of services, which process messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline is also visible in the activity diagram in \ref{activity_diagram}. An activity diagram is very usefull in this case, to get an overview of the large amount of services and the connections between them. The road followed by a message, can be seen clearly here.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=6in]{activity_diagram}
+  \caption{An activity diagram of the service module.}
+  \label{activity_diagram}
+\end{figure}
 
 \section*{Assignment 2}
 
