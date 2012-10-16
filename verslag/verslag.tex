@@ -51,13 +51,13 @@ The systems basic overview can be seen in figure \ref{lib_total_overview}. Here 
   \label{lib_gis_total}
 \end{figure}
 
-Visible in the class diagram of the Service module, on the left side of \ref{lib_service_total}, is the pipeline of services, which process messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline is also visible in the activity diagram in \ref{activity_diagram}. An activity diagram is very usefull in this case, to get an overview of the large amount of services and the connections between them. The road followed by a message, can be seen clearly here.
+Visible in the class diagram of the Service module, on the left side of \ref{lib_service_total}, is the pipeline of services, which process messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline is also visible in the sequence diagram in \ref{sequence_diagram}. An sequence diagram is very useful in this case, to get an overview of the large amount of services and the connections between them. The road followed by a message, can be seen clearly here.
 
 \begin{figure}[!h]
   \centering
   \includegraphics[width=5.4in]{activity_diagram}
-  \caption{An activity diagram of the service module.}
-  \label{activity_diagram}
+  \caption{An sequence diagram of the service module.}
+  \label{sequence_diagram}
 \end{figure}
 
 \section*{Assignment 2}
@@ -160,20 +160,13 @@ The requirements of the change in the system are the following:
 \end{itemize}
 
 \subsection*{Realization}
-The changes that where made to the system, in order to meet the requirements are the easiest to see in a sequence diagram. Before the changes, the system was looking like in diagram \ref{diag_compliant_sequence_before}.
-\\
-TODO: Add awesome sequence diagram before the change.
-\\
-As can be seen from the diagram, there are a few classes that should be changed.
+The changes that where made to the system, in order to meet the requirements are the easiest to see in combination with the sequence diagram (diagram \ref{sequence_diagram}). As can be seen from the diagram, the message is checked for compliance in the complianceService and the compliance message is then processed by VesselService.
 \begin{itemize}
 \item First of all, the ComplianceService should not only report non-compliant messages, but say for every message if the message is compliant or not. This was not too easy, because ComplianceService has two, independent message checking threads. This is fine if you only want to know which vessels are not-compliant, because if one of the two checks fails, that thread publishes the vessel as non-compliant. To fix this, an list of all known vessels is now stored in ComplianceService, and everytime a check passes, it checks in that list if the other check also passed, and then it publishes the vessel as non-compliant. So every time the checks run, they check the last result of the other check for that vessel, so they don't mark vessels as compliant if there not compliant.
 \item The second class that needs addition, is the VesselService class. This class must be made compatible with the newly broadcasted messages from ComplianceService and needs to mark vessels compliant again, if CompliantService reports compliant messages. This is a relatively small change.
 \end{itemize}
 
-Now, the system works as seen in diagram \ref{diag_compliant_sequence_after}, and meets all the requirements needed.
-\\
-TODO: Add awesome sequence diagram after the change
-
+Now, the system works according to the requirements and vessels can be turned back to compliant vessels, if they start sending out compliant messages again.
 
 \section*{Assignment 7}
 Any kind of artefact, especially documents, can be extremely useful to have when working on a software system. The documents should provide \emph{all} information and in addition to the program code, should offer the developer a complete view of the system. This system was delivered with only one document: the installation guide. However very useful for the users who wish to use the system, it offers little information for developers who want to look into the system.
