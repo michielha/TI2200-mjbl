@@ -20,9 +20,10 @@ TU Delft\\}
 \section*{Assignment 1}
 To get an idea of the architectural design, a class diagram of the program is created. Using an class diagram, it is possible to quickly see the relations between classes and their attributes and methods. When trying to add features to the system, one should first figure out where the new code should be implemented and what possible effects this could have on other classes. A class diagram gives this information.
 
-The systems basic overview can be seen in figure 1. -Hoe krijg je hier een link?- Here we devided the system into four modules: the Service module, the Domain module, the GIS module and the Utility module. Each of these modules, except for the Utility module, consist of multiple lower level modules and classes. Therefore, everyone of these modules have a personal class diagram, which can be found in figures 2, 3 and 4.
+The systems basic overview can be seen in \ref{lib_total_overview}. -Hoe krijg je hier een link?- Here we devided the system into four modules: the Service module, the Domain module, the GIS module and the Utility module. Each of these modules, except for the Utility module, consist of multiple lower level modules and classes. Therefore, everyone of these modules have a personal class diagram, which can be found in \ref{lib_domain_total}, \ref{lib_service_total} and \ref{lib_gis_total}.
 
 \begin{figure}
+  \label{lib_total_overview}
   \centering
   \includegraphics[width=4in]{lib_total_overview}
   \caption[The four basic modules]
@@ -30,6 +31,7 @@ The systems basic overview can be seen in figure 1. -Hoe krijg je hier een link?
 \end{figure}
 
 \begin{figure}
+  \label{lib_domain_total}
   \centering
   \includegraphics[width=5in]{lib_domain_total}
   \caption[The Domain module]
@@ -37,6 +39,7 @@ The systems basic overview can be seen in figure 1. -Hoe krijg je hier een link?
 \end{figure}
 
 \begin{figure}
+  \ref{lib_service_total}
   \centering
   \includegraphics[width=5in]{lib_service_total}
   \caption[The Service module]
@@ -44,13 +47,14 @@ The systems basic overview can be seen in figure 1. -Hoe krijg je hier een link?
 \end{figure}
 
 \begin{figure}
+  \label{lib_gis_total}
   \centering
   \includegraphics[width=3in]{lib_gis_total}
   \caption[The GIS module]
    {A class diagram of the GIS module.}
 \end{figure}
 
-Visible in the class diagram of the Service module, on the left side of figure 3, is the pipeline of services, which process messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline will be discussed later on, yet in this class diagram the sequence is visible.
+Visible in the class diagram of the Service module, on the left side of \ref{lib_service_total}, is the pipeline of services, which process messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline will be discussed later on, yet in this class diagram the sequence is visible.
 
 \section*{Assignment 2}
 
@@ -62,13 +66,12 @@ meuk over percentages
 \section*{Assignment 5}
 
 \section*{Assignment 6}
-In this system, all messages are fed through a compliance check. This checks if the messages are compliant to the AIS system. In the case that the messages are compliant, nothing is done. But if a message in non-compliant, the boat that the message originated from gets the tag: non-compliant. The problem with this system is that because the checks are quite strict, over time, all the vessels in the system get marked as non-compliant. To solve this, an addition must be made made to the system. Then, when a vessel starts sending compliant messages again, the system sets the state of the vessel back to compliant.
+In this system, all messages are fed through a compliance check. This checks if the messages are compliant to the AIS system. In the case that the messages are compliant, nothing is done. But if a message in non-compliant, the vessel that the message originated from will be tagged as non-compliant. The problem with this system is that because the checks are quite strict, and over time almost all the vessels in the system get marked as non-compliant. To solve this, an addition must be made made to the system. After this, when a vessel starts sending compliant messages again, the system sets the state of the vessel back to compliant as the system should have in the first place.
 
 \subsection*{Requirements}
 The requirements of the change in the system are the following:
 \begin{itemize}
-\item Vessels should be marked as non-compliant when they start sending non-compliant AIS messages
-\item Vessels should be marked as compliant again, when they start sending compliant AIS messages again
+\item Vessels should be marked as non-compliant \emph{if and only when} they send non-compliant AIS messages.
 \end{itemize}
 
 \subsection*{Realization}
