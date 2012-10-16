@@ -74,7 +74,9 @@ To change in the system has the following requirement
 \end{itemize}
 
 \subsection*{Realization}
-ZO DUS!
+To be able to use the percentage in the web server, it has to be calculated. This calculation is done by VesselService. VesselService is changed in such a way that it counts the number of compliant and non-compliant messages by incrementing the corresponding one every time a compliance report is received. The callback function from the reply service is also amended with the case of a percentage request, in which case it will calculate the percentage ($\frac{N_{compliant}}{N_{compliant}+N_{non-compliant}}\cdot100\%$). Because the reply service gets extra functionality, the proxy VesselProxy also has to be edited to be able to use the changes made in VesselService. This is also the case for VesselProxySingleton. On the other side of the system, on the web server side, a web page (percentage.html) is added. In this page, a dynamic bit of ruby prints out the percentage. This piece of data is collected by the MapController, in which an responder is set up for the page.
+
+Now the system has been changed to function according to the requirements set by this assignment, and the percentage of compliant AIS messages can be looked into through the percentage.html web page.
 
 \section*{Assignment 5}
 The extended AIS program allows a user to view vessels on the map in a range of 65km around the base station. One of the features of this system is to colorize the icons for vessels, so the user can easily identify the vessel types on the map. Each color represents a type of vessel. The program supplied had several colors/vessels implemented, and one of the tasks was to make it possible for the user to recognize more vessels.
