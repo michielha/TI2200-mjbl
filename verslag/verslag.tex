@@ -18,7 +18,7 @@ TU Delft\\}
 \maketitle
 
 \section*{Assignment 1}
-To get an idea of the architectural design, a class diagram of the program is created. Using an class diagram, it is possible to quickly see the relations between classes and their attributes and methods. When trying to add features to the system, one should first figure out where the new code should be implemented and what possible effects this could have on other classes. A class diagram gives this information.
+To get an idea of the architectural design, a class diagram of the program is created. Using a class diagram, it is possible to quickly see the relations between classes and their attributes and methods. When trying to add features to the system, one should first figure out where the new code should be implemented and what possible effects this could have on other classes. A class diagram gives this information.
 
 The systems basic overview can be seen in figure \ref{lib_total_overview}. Here we devided the system into four modules: the Service module, the Domain module, the GIS module and the Utility module. Each of these modules, except for the Utility module, consist of multiple lower level modules and classes. Therefore, everyone of these modules have a personal class diagram, which can be found in \ref{lib_domain_total}, \ref{lib_service_total} and \ref{lib_gis_total}.
 
@@ -51,7 +51,7 @@ The systems basic overview can be seen in figure \ref{lib_total_overview}. Here 
   \label{lib_gis_total}
 \end{figure}
 
-Visible in the class diagram of the Service module, on the left side of \ref{lib_service_total}, is the pipeline of services, which process messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline will be discussed later on, yet in this class diagram the sequence is visible.
+Visible in the class diagram of the Service module, on the left side of \ref{lib_service_total}, is the pipeline of services, which processes messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline will be discussed later on, yet in this class diagram the sequence is visible.
 
 \section*{Assignment 2}
 
