@@ -20,38 +20,35 @@ TU Delft\\}
 \section*{Assignment 1}
 To get an idea of the architectural design, a class diagram of the program is created. Using an class diagram, it is possible to quickly see the relations between classes and their attributes and methods. When trying to add features to the system, one should first figure out where the new code should be implemented and what possible effects this could have on other classes. A class diagram gives this information.
 
-The systems basic overview can be seen in \ref{lib_total_overview}. -Hoe krijg je hier een link?- Here we devided the system into four modules: the Service module, the Domain module, the GIS module and the Utility module. Each of these modules, except for the Utility module, consist of multiple lower level modules and classes. Therefore, everyone of these modules have a personal class diagram, which can be found in \ref{lib_domain_total}, \ref{lib_service_total} and \ref{lib_gis_total}.
+The systems basic overview can be seen in figure \ref{lib_total_overview}. Here we devided the system into four modules: the Service module, the Domain module, the GIS module and the Utility module. Each of these modules, except for the Utility module, consist of multiple lower level modules and classes. Therefore, everyone of these modules have a personal class diagram, which can be found in \ref{lib_domain_total}, \ref{lib_service_total} and \ref{lib_gis_total}.
 
 \begin{figure}
-  \label{lib_total_overview}
   \centering
   \includegraphics[width=4in]{lib_total_overview}
-  \caption[The four basic modules]
-   {An overview of the interaction between the four basic modules, which build the system.}
+  \caption{An overview of the interaction between the four basic modules, which build the system.}
+  \label{lib_total_overview}
 \end{figure}
 
 \begin{figure}
-  \label{lib_domain_total}
   \centering
   \includegraphics[width=5in]{lib_domain_total}
-  \caption[The Domain module]
-   {A class diagram of the Domain module.}
+  \caption{A class diagram of the Domain module.}
+  \label{lib_domain_total}
 \end{figure}
 
 \begin{figure}
   \ref{lib_service_total}
   \centering
   \includegraphics[width=5in]{lib_service_total}
-  \caption[The Service module]
-   {A class diagram of the Service module.}
+  \caption{A class diagram of the Service module.}
+  \label{lib_service_total}
 \end{figure}
 
 \begin{figure}
-  \label{lib_gis_total}
   \centering
   \includegraphics[width=3in]{lib_gis_total}
-  \caption[The GIS module]
-   {A class diagram of the GIS module.}
+  \caption{A class diagram of the GIS module.}
+  \label{lib_gis_total}
 \end{figure}
 
 Visible in the class diagram of the Service module, on the left side of \ref{lib_service_total}, is the pipeline of services, which process messages from the vessels, starting with TransmitterService and ending with VesselService. This pipeline will be discussed later on, yet in this class diagram the sequence is visible.
